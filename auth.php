@@ -69,9 +69,13 @@ class auth_plugin_soap extends auth_plugin_base {
         $params[$this->config->username_field] = $extusername;
         $params[$this->config->password_field] = $extpassword;
 
-        $params['ou']= 'Academics';
-        $params['sistema'] = 'koha';
-        $params['claveHash'] = '0P1a2s3s4w5o6r7d8PaabrcadLeDfAgPh';
+        // Extra params:
+        if (!empty($this->config->extra_parameters)) {
+            $extras = json_decode($this->config->extra_parameters, true, 2);
+            if (is_array($extras)) {
+                $params = array_merge($params, $extras);
+            }
+        }
 
         $result = $client->call($this->config->method_name, $params);
         $err = $client->getError();
@@ -80,7 +84,8 @@ class auth_plugin_soap extends auth_plugin_base {
             return false;
         }
 
-        return $result[$this->config->result_name] == 'true';
+        $user = $DB->get_record('user', array('username'=>$username, 'mnethostid'=>$CFG->mnet_localhost_id));
+        return $result[$this->config->result_name] == 'true' and !empty($user);
 
     }
 
@@ -102,7 +107,7 @@ class auth_plugin_soap extends auth_plugin_base {
     }
 
     function prevent_local_passwords() {
-        return false;
+        return true;
     }
 
     /**

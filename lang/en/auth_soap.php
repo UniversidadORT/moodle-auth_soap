@@ -36,4 +36,5 @@ $string['auth_soap_result_name_key'] = 'Webservice result name';
 $string['auth_soap_username_field_key'] = 'Username field name';
 $string['auth_soap_password_field_key'] = 'Password field name';
 $string['auth_soap_encoding_key'] = 'Webservice encoding';
+$string['auth_soap_extra_parameters_key'] = 'Webservice extra parameters';
 
