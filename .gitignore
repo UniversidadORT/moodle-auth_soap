@@ -1,0 +1,20 @@
+# Ignore tracking the following type of files:                                                                      
+*.[oa]
+*~
+*.log
+*.swp
+*.cache
+*.db
+*.gz
+*.tar.gz
+*.tar.bz2
+*.zip
+
+# Some type of temp files
+*.tmp
+*.old
+*.new
+
+# Ignore external libraries
+lib/
+

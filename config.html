@@ -3,9 +3,6 @@
 if (!isset($config->url)) {
     $config->url = 'http://localhost/auth/service.soap';
 }
-if (!isset($config->ns)) {
-    $config->ns = 'http://localhost/';
-}
 if (!isset($config->method_name)) {
     $config->method_name = 'authenticate';
 }
@@ -27,12 +24,6 @@ if (!isset($config->encoding)) {
 <label for="url"><?php print_string('auth_soap_url_key', 'auth_soap') ?></label>
 <input name="url" id="url" type="text" size="30" value="<?php echo $config->url?>" />
 <?php if (isset($err['url'])) { echo $OUTPUT->error_text($err['url']); } ?>
-</p>
-
-<p>
-<label for="ns"><?php print_string('auth_soap_ns_key', 'auth_soap') ?></label>
-<input name="ns" id="" type="text" size="30" value="<?php echo $config->ns?>" />
-<?php if (isset($err['ns'])) { echo $OUTPUT->error_text($err['ns']); } ?>
 </p>
 
 <p>
