@@ -15,10 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information
+ * Version details
  *
  * @package    auth
- * @subpackage none
+ * @subpackage soap
+ * @author     Jean Pierre Ducassou
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
