@@ -22,19 +22,19 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'SOAP authentication';
-$string['auth_soaptitle'] = 'SOAP authentication';
-$string['auth_soapdescription'] = 'Authentication via an external SOAP webservice.';
+$string['pluginname'] = 'Autencicación SOAP';
+$string['auth_soaptitle'] = 'Autencicación SOAP';
+$string['auth_soapdescription'] = 'Autencicación via servicio web SOAP externo.';
 
 /*
  * Config params
 */
 
-$string['auth_soap_url_key'] = 'Webservice url';
-$string['auth_soap_method_name_key'] = 'Webservice method name';
-$string['auth_soap_result_name_key'] = 'Webservice result name';
-$string['auth_soap_username_field_key'] = 'Username field name';
-$string['auth_soap_password_field_key'] = 'Password field name';
-$string['auth_soap_encoding_key'] = 'Webservice encoding';
-$string['auth_soap_extra_parameters_key'] = 'Webservice extra parameters (JSON encoded)';
+$string['auth_soap_url_key'] = 'URL del Webservice';
+$string['auth_soap_method_name_key'] = 'Nombre de la operación';
+$string['auth_soap_result_name_key'] = 'Nombre del resultado';
+$string['auth_soap_username_field_key'] = 'Nombre del campo correspondiente a la cuenta de usuario';
+$string['auth_soap_password_field_key'] = 'Nombre del campo correspondiente a la contraseña';
+$string['auth_soap_encoding_key'] = 'Codificación del Webservice';
+$string['auth_soap_extra_parameters_key'] = 'Parámetros extras del Webservice (codificados en JSON)';
 
