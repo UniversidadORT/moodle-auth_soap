@@ -47,6 +47,11 @@ class auth_plugin_soap extends auth_plugin_base {
     function user_login ($username, $password) {
         global $CFG, $DB;
 
+        if (!class_exists('nusoap_client')) {
+            print_error('nusoap library not installed', 'auth_soap');
+            return false;
+        }
+
         if (!$username or !$password) {    // Don't allow blank usernames or passwords
             return false;
         }
