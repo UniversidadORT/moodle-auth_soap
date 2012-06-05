@@ -1,7 +1,7 @@
 .PHONY: clean archive
 
 PACKAGE=auth_soap
-PREFIX=auth/soap
+PREFIX=soap
 
 default: archive
 
