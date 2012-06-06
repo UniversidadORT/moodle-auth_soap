@@ -15,6 +15,3 @@
 *.old
 *.new
 
-# Ignore external libraries
-lib/
-

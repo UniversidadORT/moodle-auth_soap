@@ -14,7 +14,7 @@ if (!defined('MOODLE_INTERNAL')) {
 }
 
 require_once($CFG->libdir.'/authlib.php');
-require_once(dirname(__FILE__) . '/lib/nusoap.php');
+require_once(dirname(__FILE__) . '/lib/nusoap/nusoap.php');
 
 /**
  * Plugin for SOAP authentication.
