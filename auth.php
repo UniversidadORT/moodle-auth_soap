@@ -162,7 +162,7 @@ class auth_plugin_soap extends auth_plugin_base {
      * @param array $page An object containing all the data for this page.
      */
     function config_form($config, $err, $user_fields) {
-        include "config.html";
+        include 'config.php';
     }
 
     /**
