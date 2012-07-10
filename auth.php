@@ -85,11 +85,14 @@ class auth_plugin_soap extends auth_plugin_base {
         $result = $client->call($this->config->method_name, $params);
         $err = $client->getError();
         if ($err) {
-             error_log($err);
+            error_log($err);
             return false;
         }
 
         $user = $DB->get_record('user', array('username'=>$username, 'mnethostid'=>$CFG->mnet_localhost_id));
+        if ($result[$this->config->result_name] == 'true' and empty($user)) {
+            error_log('auth ok but user empty.');
+        }
         return $result[$this->config->result_name] == 'true' and !empty($user);
 
     }
