@@ -58,7 +58,7 @@ if (!isset($config->encoding)) {
 
 <p>
 <label for="extra_parameters"><?php print_string('auth_soap_extra_parameters_key', 'auth_soap') ?></label>
-<input name="extra_parameters" id="extra_parameters" type="text" size="30" value="<?php echo $config->extra_parameters?>" />
+<input name="extra_parameters" id="extra_parameters" type="text" size="30" value="<?php echo htmlentities($config->extra_parameters, ENT_QUOTES) ?>" />
 <?php if (isset($err['extra_parameters'])) { echo $OUTPUT->error_text($err['extra_parameters']); } ?>
 </p>
 
