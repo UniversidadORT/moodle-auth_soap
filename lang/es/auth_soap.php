@@ -22,9 +22,9 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Autencicación SOAP';
-$string['auth_soaptitle'] = 'Autencicación SOAP';
-$string['auth_soapdescription'] = 'Autencicación via servicio web SOAP externo.';
+$string['pluginname'] = 'Autenticación SOAP';
+$string['auth_soaptitle'] = 'Autenticación SOAP';
+$string['auth_soapdescription'] = 'Autenticación via servicio web SOAP externo.';
 
 /*
  * Config params
