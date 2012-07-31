@@ -9,6 +9,9 @@ if (!isset($config->method_name)) {
 if (!isset($config->result_name)) {
     $config->result_name = 'result';
 }
+if (!isset($config->result_value)) {
+    $config->result_value = 'true';
+}
 if (!isset($config->username_field)) {
     $config->username_field = 'username';
 }
@@ -36,6 +39,12 @@ if (!isset($config->encoding)) {
 <label for="result_name"><?php print_string('auth_soap_result_name_key', 'auth_soap') ?></label>
 <input name="result_name" id="result_name" type="text" size="30" value="<?php echo $config->result_name?>" />
 <?php if (isset($err['result_name'])) { echo $OUTPUT->error_text($err['result_name']); } ?>
+</p>
+
+<p>
+<label for="result_value"><?php print_string('auth_soap_result_value_key', 'auth_soap') ?></label>
+<input name="result_value" id="result_value" type="text" size="30" value="<?php echo $config->result_value?>" />
+<?php if (isset($err['result_value'])) { echo $OUTPUT->error_text($err['result_value']); } ?>
 </p>
 
 <p>

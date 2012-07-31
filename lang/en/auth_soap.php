@@ -33,6 +33,7 @@ $string['auth_soapdescription'] = 'Authentication via an external SOAP webservic
 $string['auth_soap_url_key'] = 'Webservice url';
 $string['auth_soap_method_name_key'] = 'Webservice method name';
 $string['auth_soap_result_name_key'] = 'Webservice result name';
+$string['auth_soap_result_value_key'] = 'Webservice result value that corresponds to successful login';
 $string['auth_soap_username_field_key'] = 'Username field name';
 $string['auth_soap_password_field_key'] = 'Password field name';
 $string['auth_soap_encoding_key'] = 'Webservice encoding';

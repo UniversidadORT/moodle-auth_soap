@@ -57,43 +57,61 @@ class auth_plugin_soap extends auth_plugin_base {
         }
 
         $textlib = textlib_get_instance();
-        $extusername = $textlib->convert($username, 'utf-8', $this->config->encoding);
-        $extpassword = $textlib->convert($password, 'utf-8', $this->config->encoding);
+        $extusername = $textlib -> convert($username, 'utf-8', $this -> config -> encoding);
+        $extpassword = $textlib -> convert($password, 'utf-8', $this -> config -> encoding);
 
         // SOAP client creation
-        $client = new nusoap_client($this->config->url, true);
-        $err = $client->getError();
+        $client = new nusoap_client($this -> config -> url, true);
+        $err = $client -> getError();
         if ($err) {
             error_log($err);
             return false;
         }
 
-        $client->soap_defencoding = $this->config->encoding;
+        $client -> soap_defencoding = $this -> config -> encoding;
 
         $params = array();
-        $params[$this->config->username_field] = $extusername;
-        $params[$this->config->password_field] = $extpassword;
+        $params[$this -> config -> username_field] = $extusername;
+        $params[$this -> config -> password_field] = $extpassword;
 
         // Extra params:
-        if (!empty($this->config->extra_parameters)) {
-            $extras = json_decode($this->config->extra_parameters, true, 2);
+        if (!empty($this -> config -> extra_parameters)) {
+            $extras = json_decode($this -> config -> extra_parameters, true, 2);
             if (is_array($extras)) {
                 $params = array_merge($params, $extras);
             }
         }
 
-        $result = $client->call($this->config->method_name, $params);
-        $err = $client->getError();
+        $result = $client -> call($this -> config -> method_name, $params);
+        $err = $client -> getError();
         if ($err) {
             error_log($err);
             return false;
         }
 
-        $user = $DB->get_record('user', array('username'=>$username, 'mnethostid'=>$CFG->mnet_localhost_id));
-        if ($result[$this->config->result_name] == 'true' and empty($user)) {
-            error_log('auth ok but user empty.');
+        /* Check if respose is good */
+        $result_value = $result;
+        $result_path  = split('::', $this -> config -> result_name);
+
+        foreach ($result_path as $path_part)
+            $result_value = $result_value[$path_part];
+
+        /* Compare the value we've got through the ws with the one we consider correct */
+        $ws_succeded = $result_value == $this -> config -> result_value;
+
+        if (!$ws_succeded) {
+            error_log('WS not ok. ' . str_replace(array("\n", '  '), array(), print_r($result, true)) );
+            return false;
         }
-        return $result[$this->config->result_name] == 'true' and !empty($user);
+
+        /* Check if user exists */
+        $user = $DB -> get_record('user', array('username' => $username, 'mnethostid' => $CFG -> mnet_localhost_id));
+        if (empty($user)) {
+            error_log('auth ok but user empty.');
+            return false;
+        }
+
+        return true;
 
     }
 
