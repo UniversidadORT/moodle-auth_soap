@@ -19,7 +19,7 @@
  *
  * @package    auth
  * @subpackage soap
- * @author     Jean Pierre Ducassou
+ * @author     Jean Pierre Ducassou (ducassou@ort.edu.uy)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
