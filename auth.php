@@ -13,7 +13,7 @@ if (!defined('MOODLE_INTERNAL')) {
     die('Direct access to this script is forbidden.');    ///  It must be included from a Moodle page
 }
 
-require_once($CFG->libdir.'/authlib.php');
+require_once($CFG -> libdir . '/authlib.php');
 require_once(dirname(__FILE__) . '/lib/nusoap/nusoap.php');
 
 /**
@@ -25,14 +25,14 @@ class auth_plugin_soap extends auth_plugin_base {
      * Constructor.
      */
     function auth_plugin_soap() {
-        $this->authtype = 'soap';
-        $this->roleauth = 'auth_soap';
-        $this->errorlogtag = '[AUTH SOAP] ';
-        $this->pluginconfig = 'auth/soap';
-        $this->config = get_config($this->pluginconfig);
+        $this -> authtype = 'soap';
+        $this -> roleauth = 'auth_soap';
+        $this -> errorlogtag = '[AUTH SOAP] ';
+        $this -> pluginconfig = 'auth/soap';
+        $this -> config = get_config($this -> pluginconfig);
 
-        if(empty($this->config->encoding)) {
-            $this->config->encoding = 'utf-8';
+        if(empty($this -> config -> encoding)) {
+            $this -> config -> encoding = 'utf-8';
         }
     }
 
@@ -85,7 +85,7 @@ class auth_plugin_soap extends auth_plugin_base {
         $result = $client -> call($this -> config -> method_name, $params);
         $err = $client -> getError();
         if ($err) {
-            error_log($err);
+            error_log('For user: ' . $extusername . ' - ' . $err);
             return false;
         }
 
@@ -100,14 +100,14 @@ class auth_plugin_soap extends auth_plugin_base {
         $ws_succeded = $result_value == $this -> config -> result_value;
 
         if (!$ws_succeded) {
-            error_log('WS not ok. ' . str_replace(array("\n", '  '), array(), print_r($result, true)) );
+            error_log('For user: ' . $extusername . ' - ' . 'WS not ok. ' . str_replace(array("\n", '  '), array(), print_r($result, true)) );
             return false;
         }
 
         /* Check if user exists */
         $user = $DB -> get_record('user', array('username' => $username, 'mnethostid' => $CFG -> mnet_localhost_id));
         if (empty($user)) {
-            error_log('auth ok but user empty.');
+            error_log('For user: ' . $extusername . ' - ' . 'auth ok but user empty.');
             return false;
         }
 
