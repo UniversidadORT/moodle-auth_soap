@@ -126,10 +126,8 @@ class auth_plugin_soap extends auth_plugin_base {
      *
      */
     function user_update_password($user, $newpassword) {
-/*
-        $user = get_complete_user_data('id', $user->id);
-        return update_internal_user_password($user, $newpassword);
-*/
+        // Complete if the ws can update password
+        return false;
     }
 
     function prevent_local_passwords() {
@@ -142,7 +140,7 @@ class auth_plugin_soap extends auth_plugin_base {
      * @return bool
      */
     function is_internal() {
-        return true;
+        return false;
     }
 
     /**
@@ -153,16 +151,6 @@ class auth_plugin_soap extends auth_plugin_base {
      */
     function can_change_password() {
         return false;
-    }
-
-    /**
-     * Returns the URL for changing the user's pw, or empty if the default can
-     * be used.
-     *
-     * @return moodle_url
-     */
-    function change_password_url() {
-        return null;
     }
 
     /**
@@ -190,9 +178,9 @@ class auth_plugin_soap extends auth_plugin_base {
      * Processes and stores configuration data for this authentication plugin.
      */
     function process_config($config) {
-        // Save settings
-        foreach ($config as $key => $value)
-            set_config($key, trim($config->$key), $this->pluginconfig);
+        foreach ($config as $key => $value) {
+            set_config($key, trim($config -> $key), $this -> pluginconfig);
+        }
         return true;
     }
 
