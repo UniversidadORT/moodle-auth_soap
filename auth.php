@@ -56,9 +56,8 @@ class auth_plugin_soap extends auth_plugin_base {
             return false;
         }
 
-        $textlib = textlib_get_instance();
-        $extusername = $textlib -> convert($username, 'utf-8', $this -> config -> encoding);
-        $extpassword = $textlib -> convert($password, 'utf-8', $this -> config -> encoding);
+        $extusername = textlib::convert($username, 'utf-8', $this -> config -> encoding);
+        $extpassword = textlib::convert($password, 'utf-8', $this -> config -> encoding);
 
         // SOAP client creation
         $client = new nusoap_client($this -> config -> url, true);
