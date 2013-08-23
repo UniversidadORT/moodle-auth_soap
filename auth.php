@@ -91,7 +91,7 @@ class auth_plugin_soap extends auth_plugin_base {
 
         /* Check if respose is good */
         $result_value = $result;
-        $result_path  = split('::', $this -> config -> result_name);
+        $result_path  = preg_split('::', $this -> config -> result_name); // split is deprecated
 
         foreach ($result_path as $path_part)
             $result_value = $result_value[$path_part];
