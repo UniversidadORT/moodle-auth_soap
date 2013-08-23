@@ -88,12 +88,13 @@ class auth_plugin_soap extends auth_plugin_base {
             return false;
         }
 
-        /* Check if respose is good */
+        /* Check if response is good */
         $result_value = $result;
-        $result_path  = preg_split('::', $this -> config -> result_name); // split is deprecated
+        $result_path  = preg_split('/::/', $this -> config -> result_name); // split is deprecated
 
-        foreach ($result_path as $path_part)
+        foreach ($result_path as $path_part) {
             $result_value = $result_value[$path_part];
+        }
 
         /* Compare the value we've got through the ws with the one we consider correct */
         $ws_succeded = $result_value == $this -> config -> result_value;
