@@ -93,6 +93,9 @@ class auth_plugin_soap extends auth_plugin_base {
         $result_path  = explode('::', $this -> config -> result_name); // split is deprecated
 
         foreach ($result_path as $path_part) {
+            if (!array_key_exists($path_part, $result_value)) {
+                return false;
+            }
             $result_value = $result_value[$path_part];
         }
 
