@@ -1,11 +1,12 @@
 <?php
 
 /**
+ * Authentication Plugin: Authentication throught SOAP webservice
+ *
+ * @package    auth
+ * @subpackage soap
  * @author Jean Pierre Ducassou
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
- * @package moodle multiauth
- *
- * Authentication Plugin: Authentication throught SOAP webservice
  *
  */
 
