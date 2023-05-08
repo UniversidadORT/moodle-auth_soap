@@ -56,9 +56,11 @@ class auth_plugin_soap extends auth_plugin_base {
         if (!$username or !$password) {    // Don't allow blank usernames or passwords
             return false;
         }
-
-        $extusername = core_text::convert($username, 'utf-8', $this->config->extencoding);
-        $extpassword = core_text::convert($password, 'utf-8', $this->config->extencoding);
+#Orejas 20190813
+#        $extusername = core_text::convert($username, 'utf-8', $this->config->extencoding);
+#        $extpassword = core_text::convert($password, 'utf-8', $this->config->extencoding);
+	$extusername = $username;
+	$extpassword = $password;
 
         // SOAP client creation
         $client = new nusoap_client($this -> config -> url, true);
